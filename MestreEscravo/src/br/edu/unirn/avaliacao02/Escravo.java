@@ -10,13 +10,13 @@ public class Escravo {
 		
 		InetAddress ip = InetAddress.getByName("::1");
 		
-		DatagramPacket packet = new DatagramPacket(new byte[512], 512, ip, 2000);
-		DatagramSocket socket = new DatagramSocket();
+		DatagramPacket datagramPacket = new DatagramPacket(new byte[512], 512, ip, 2000);
+		DatagramSocket datagramSocket = new DatagramSocket();
 		
 		while(true) {
-			packet.setData(InetAddress.getLocalHost().getHostAddress().getBytes());
-			socket.send(packet);
-			socket.close();
+			datagramPacket.setData(InetAddress.getLocalHost().getHostAddress().getBytes());
+			datagramSocket.send(datagramPacket);
+			datagramSocket.close();
 		}
 
 	}

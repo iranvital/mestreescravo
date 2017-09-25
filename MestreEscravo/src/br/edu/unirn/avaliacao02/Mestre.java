@@ -10,14 +10,14 @@ public class Mestre {
 		
 		ArrayList<String> ipescravos = new ArrayList<String>();
 
-		DatagramSocket socket = new DatagramSocket(2000);
-		DatagramPacket packet = new DatagramPacket(new byte[512], 512);
+		DatagramSocket datagramSocket = new DatagramSocket(2000);
+		DatagramPacket datagramPacket = new DatagramPacket(new byte[512], 512);
 		
 		while(true) {
 			System.out.println("Aguardando mensagem... ");
-			socket.receive(packet);
-			System.out.println("IP: " + new String(packet.getData()));
-			String ippacote = new String(packet.getData());
+			datagramSocket.receive(datagramPacket);
+			System.out.println("IP: " + new String(datagramPacket.getData()));
+			String ippacote = new String(datagramPacket.getData());
 			
 			if(!ippacote.isEmpty()) {
 				ipescravos.add(ippacote);
@@ -25,8 +25,7 @@ public class Mestre {
 					System.out.println(ipescravos.get(i));
 				}
 			}
-			packet = new DatagramPacket(new byte[512],512);		
+			datagramPacket = new DatagramPacket(new byte[512],512);		
 		}
-
 	}
 }
